@@ -23,6 +23,11 @@ Globals="*res://Globals.gd"
 window/size/width=800
 window/size/height=450
 
+[global]
+
+"пик"=false
+"пиксели"=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

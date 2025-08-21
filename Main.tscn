@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://arts/earth.png" type="Texture" id=1]
 [ext_resource path="res://arts/water.png" type="Texture" id=2]
@@ -17,12 +17,19 @@
 [ext_resource path="res://arts/money/pixil-frame-4.png" type="Texture" id=15]
 [ext_resource path="res://arts/money/pixil-frame-2.png" type="Texture" id=16]
 [ext_resource path="res://arts/money/pixil-frame-6.png" type="Texture" id=17]
+[ext_resource path="res://arts/ChatGPT Image 21 авг. 2025 г., 21_11_49.png" type="Texture" id=18]
+[ext_resource path="res://icon.png" type="Texture" id=19]
+[ext_resource path="res://ambient_song.wav" type="AudioStream" id=20]
+[ext_resource path="res://eee08d43452027c.mp3" type="AudioStream" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="TileSet" id=3]
 0/name = "earth.png 0"
@@ -56,14 +63,14 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
+1/shape = SubResource( 11 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -81,6 +88,27 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
+3/name = "icon.png 3"
+3/texture = ExtResource( 19 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 12 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 33.2415
@@ -105,29 +133,72 @@ animations = [ {
 radius = 43.8483
 height = 32.2624
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 143, 667.5 )
+
 [sub_resource type="DynamicFont" id=10]
 size = 80
 font_data = ExtResource( 8 )
 
 [node name="Main" type="Node"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_top = -25.0
-margin_right = 1773.0
-margin_bottom = 550.0
-color = Color( 0, 0, 0, 1 )
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 2551.0
+margin_bottom = 1309.0
+texture = ExtResource( 18 )
+expand = true
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -7, 1 )
+position = Vector2( -4, 735 )
 rotation = -0.00574027
 tile_set = SubResource( 3 )
 show_collision = true
+cell_clip_uv = true
 format = 1
-tile_data = PoolIntArray( 262157, 2, 0, 327701, 0, 0, 327702, 1, 0, 327703, 1, 0, 393236, 0, 0, 393237, 0, 0, 393238, 1, 0, 393239, 1, 0, 393240, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458761, 0, 0, 458762, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 1, 0, 458775, 1, 0, 458776, 0, 0, 458777, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 1, 0, 524311, 1, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 589846, 1, 0, 589847, 1, 0 )
+tile_data = PoolIntArray( 262157, 2, 0, 327701, 0, 0, 327702, 1, 0, 327703, 1, 0, 393236, 0, 0, 393237, 0, 0, 393238, 1, 0, 393239, 1, 0, 393240, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458761, 0, 0, 458762, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 1, 0, 458775, 1, 0, 458776, 0, 0, 458777, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 1, 0, 524311, 1, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524317, 0, 0, 524318, 0, 0, 524320, 0, 0, 524321, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 589846, 1, 0, 589847, 1, 0, 589851, 1, 0, 589852, 1, 0, 589853, 1, 0, 589854, 1, 0, 589855, 1, 0, 589856, 1, 0, 589857, 1, 0, 589858, 1, 0, 589859, 1, 0, 589860, 1, 0, 589861, 1, 0, 589862, 1, 0, 589863, 1, 0 )
+
+[node name="Coin2" type="Node2D" parent="."]
+position = Vector2( 3, 763 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CoinArea" type="Area2D" parent="Coin2"]
+position = Vector2( 1443, 242 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2/CoinArea"]
+shape = SubResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Coin2/CoinArea"]
+frames = SubResource( 9 )
+playing = true
+
+[node name="Coin3" type="Node2D" parent="."]
+position = Vector2( 476, 951 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CoinArea" type="Area2D" parent="Coin3"]
+position = Vector2( 1443, 242 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin3/CoinArea"]
+shape = SubResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Coin3/CoinArea"]
+frames = SubResource( 9 )
+playing = true
 
 [node name="Coin" type="Node2D" parent="."]
-position = Vector2( 0, 28 )
+position = Vector2( -207, 883 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CoinArea" type="Area2D" parent="Coin"]
 position = Vector2( 1443, 242 )
@@ -140,15 +211,11 @@ frames = SubResource( 9 )
 playing = true
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 808, 423 )
+position = Vector2( 292, 1157 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 114, -71 )
-current = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 position = Vector2( 0, 43.5 )
@@ -162,12 +229,46 @@ position = Vector2( -9, 44 )
 rotation = 1.53065
 shape = SubResource( 7 )
 
-[node name="Label" type="Label" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+physics_interpolation_mode = 2
+position = Vector2( 114, -71 )
+current = true
+limit_left = 5
+limit_right = 2550
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 21 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2695, 683 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -142, 645 )
+shape = SubResource( 13 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_left = 242.0
+margin_top = 2041.0
+margin_right = 917.0
+margin_bottom = 2437.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
 anchor_right = 0.275
-margin_left = -267.0
-margin_top = -274.0
-margin_right = -41.0
-margin_bottom = -159.0
+margin_left = -210.0
+margin_top = -2017.0
+margin_right = 349.0
+margin_bottom = -1621.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
@@ -176,8 +277,12 @@ text = "0"
 autowrap = true
 clip_text = true
 uppercase = true
-percent_visible = -1.0
 script = ExtResource( 9 )
 
-[connection signal="collected" from="Coin" to="Player/Label" method="_on_Coin_collected"]
+[connection signal="collected" from="Coin2" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
+[connection signal="body_entered" from="Coin2/CoinArea" to="Coin2" method="_on_CoinArea_body_entered"]
+[connection signal="collected" from="Coin3" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
+[connection signal="body_entered" from="Coin3/CoinArea" to="Coin3" method="_on_CoinArea_body_entered"]
+[connection signal="collected" from="Coin" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
 [connection signal="body_entered" from="Coin/CoinArea" to="Coin" method="_on_CoinArea_body_entered"]
+[connection signal="startuem" from="Player" to="Player/Camera2D" method="_on_Player_startuem"]
