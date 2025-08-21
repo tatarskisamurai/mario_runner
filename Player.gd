@@ -11,6 +11,8 @@ var velocity = Vector2.ZERO
 # Ссылка на спрайт
 onready var sprite = $AnimatedSprite  # Убедись, что имя узла — "Sprite"
 
+
+
 func _physics_process(delta):
 	# Применяем гравитацию
 	if not is_on_floor():
@@ -39,3 +41,5 @@ func _physics_process(delta):
 
 	# Двигаем
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+
