@@ -1,10 +1,8 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://arts/earth.png" type="Texture" id=1]
 [ext_resource path="res://arts/water.png" type="Texture" id=2]
-[ext_resource path="res://arts/pixilart-drawing.png" type="Texture" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
-[ext_resource path="res://arts/pixilart-drawing (1).png" type="Texture" id=5]
 [ext_resource path="res://arts/pngwing.com.png" type="Texture" id=6]
 [ext_resource path="res://Coin.gd" type="Script" id=7]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=8]
@@ -23,6 +21,15 @@
 [ext_resource path="res://eee08d43452027c.mp3" type="AudioStream" id=21]
 [ext_resource path="res://pixil-frame-0 (1).png" type="Texture" id=22]
 [ext_resource path="res://pixil-frame-0 (2).png" type="Texture" id=23]
+[ext_resource path="res://pixil-frame-7.png" type="Texture" id=24]
+[ext_resource path="res://pixil-frame-9.png" type="Texture" id=25]
+[ext_resource path="res://pixil-frame-1.png" type="Texture" id=26]
+[ext_resource path="res://pixil-frame-2.png" type="Texture" id=27]
+[ext_resource path="res://pixil-frame-5.png" type="Texture" id=28]
+[ext_resource path="res://pixil-frame-6.png" type="Texture" id=29]
+[ext_resource path="res://pixil-frame-8.png" type="Texture" id=31]
+[ext_resource path="res://pixil-frame-4.png" type="Texture" id=32]
+[ext_resource path="res://pixil-frame-3.png" type="Texture" id=33]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -173,10 +180,10 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 31 ), ExtResource( 25 ) ],
 "loop": true,
-"name": "walk",
-"speed": 2.0
+"name": "New Anim",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=7]
@@ -271,7 +278,7 @@ __meta__ = {
 position = Vector2( 0, 43.5 )
 scale = Vector2( 1, 0.87 )
 frames = SubResource( 5 )
-animation = "walk"
+animation = "New Anim"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
