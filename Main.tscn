@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://arts/earth.png" type="Texture" id=1]
 [ext_resource path="res://arts/water.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=19]
 [ext_resource path="res://ambient_song.wav" type="AudioStream" id=20]
 [ext_resource path="res://eee08d43452027c.mp3" type="AudioStream" id=21]
+[ext_resource path="res://pixil-frame-0 (1).png" type="Texture" id=22]
+[ext_resource path="res://pixil-frame-0 (2).png" type="Texture" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -29,6 +31,12 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="TileSet" id=3]
@@ -109,6 +117,48 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
+4/name = "pixil-frame-0 (2).png 4"
+4/texture = ExtResource( 23 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 14 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "pixil-frame-0 (1).png 5"
+5/texture = ExtResource( 22 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 15 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 15 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 33.2415
@@ -157,7 +207,7 @@ tile_set = SubResource( 3 )
 show_collision = true
 cell_clip_uv = true
 format = 1
-tile_data = PoolIntArray( 262157, 2, 0, 327701, 0, 0, 327702, 1, 0, 327703, 1, 0, 393236, 0, 0, 393237, 0, 0, 393238, 1, 0, 393239, 1, 0, 393240, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458761, 0, 0, 458762, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 1, 0, 458775, 1, 0, 458776, 0, 0, 458777, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 1, 0, 524311, 1, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524317, 0, 0, 524318, 0, 0, 524320, 0, 0, 524321, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 589846, 1, 0, 589847, 1, 0, 589851, 1, 0, 589852, 1, 0, 589853, 1, 0, 589854, 1, 0, 589855, 1, 0, 589856, 1, 0, 589857, 1, 0, 589858, 1, 0, 589859, 1, 0, 589860, 1, 0, 589861, 1, 0, 589862, 1, 0, 589863, 1, 0 )
+tile_data = PoolIntArray( 262157, 2, 0, 327701, 4, 0, 327702, 1, 0, 327703, 1, 0, 393236, 4, 0, 393237, 5, 0, 393238, 1, 0, 393239, 1, 0, 393240, 4, 0, 458755, 4, 0, 458756, 4, 0, 458757, 4, 0, 458761, 4, 0, 458762, 4, 0, 458771, 4, 0, 458772, 5, 0, 458773, 5, 0, 458774, 1, 0, 458775, 1, 0, 458776, 5, 0, 458777, 4, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 5, 0, 524292, 5, 0, 524293, 5, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 5, 0, 524298, 5, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 4, 0, 524307, 5, 0, 524308, 5, 0, 524309, 5, 0, 524310, 1, 0, 524311, 1, 0, 524312, 5, 0, 524313, 5, 0, 524314, 4, 0, 524315, 4, 0, 524317, 4, 0, 524318, 4, 0, 524320, 4, 0, 524321, 4, 0, 524324, 4, 0, 524325, 4, 0, 524326, 4, 0, 524327, 4, 0, 589846, 1, 0, 589847, 1, 0, 589851, 1, 0, 589852, 1, 0, 589853, 1, 0, 589854, 1, 0, 589855, 1, 0, 589856, 1, 0, 589857, 1, 0, 589858, 1, 0, 589859, 1, 0, 589860, 1, 0, 589861, 1, 0, 589862, 1, 0, 589863, 1, 0 )
 
 [node name="Coin2" type="Node2D" parent="."]
 position = Vector2( 3, 763 )
