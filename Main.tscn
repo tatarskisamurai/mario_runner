@@ -224,7 +224,10 @@ size = 80
 font_data = ExtResource( 8 )
 
 [sub_resource type="PhysicsMaterial" id=19]
+friction = 2.0
 rough = true
+bounce = 100.0
+absorbent = true
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 31.25, 31 )
