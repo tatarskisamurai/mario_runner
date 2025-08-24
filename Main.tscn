@@ -36,8 +36,8 @@
 [ext_resource path="res://pixil-frame-0 (7).png" type="Texture" id=34]
 [ext_resource path="res://Enemy.gd" type="Script" id=36]
 
-[sub_resource type="CapsuleShape2D" id=22]
-radius = 50.0
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 41, 55 )
 
 [sub_resource type="CircleShape2D" id=21]
 radius = 269.757
@@ -244,7 +244,7 @@ extents = Vector2( 31.25, 31 )
 [node name="Main" type="Node"]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 2162, 1165 )
+position = Vector2( 2220, 1171 )
 script = ExtResource( 36 )
 bullet_scene = ExtResource( 30 )
 
@@ -266,15 +266,15 @@ wait_time = 1.5
 autostart = true
 
 [node name="ShootPoint" type="RayCast2D" parent="Enemy"]
-position = Vector2( -64, -5 )
+position = Vector2( 0, -22 )
 enabled = true
-cast_to = Vector2( -205, -5 )
+cast_to = Vector2( -76, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 4.0
-margin_top = 6.0
-margin_right = 2552.0
-margin_bottom = 1309.0
+visible = false
+margin_left = 3.0
+margin_right = 2551.0
+margin_bottom = 1303.0
 texture = ExtResource( 18 )
 expand = true
 

@@ -1,4 +1,4 @@
-# enemy.gd (отладочная версия)
+# enemy.gd — стреляет в сторону игрока (любое направление)
 extends KinematicBody2D
 
 export var detection_radius = 300
@@ -32,12 +32,14 @@ func _ready():
 	detection_area.connect("body_exited", self, "_on_detection_area_body_exited")
 	shoot_timer.connect("timeout", self, "_on_shoot_timer_timeout")
 
+
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
 		player = body
 		player_in_range = true
 		shoot_timer.start()
 		print("✅ Игрок вошёл в зону: ", player.name)
+
 
 func _on_detection_area_body_exited(body):
 	if body == player:
@@ -46,33 +48,50 @@ func _on_detection_area_body_exited(body):
 		player = null
 		print("❌ Игрок вышел из зоны")
 
+
 func _on_shoot_timer_timeout():
 	print("⏰ Таймер сработал!")
-	if player_in_range and player != null and bullet_scene:
-		var bullet = bullet_scene.instance()
-		if bullet == null:
-			print("❌ Пуля не создалась! Проверь Bullet.tscn")
-			return
-		print("✅ Пуля создана")
-
-		add_child(bullet)
-		bullet.global_position = shoot_point.global_position
-		print("🎯 Позиция пули: ", bullet.global_position)
-
-		var direction = (player.global_position - shoot_point.global_position).normalized()
-		print("➡️ Направление: ", direction)
-
-		if bullet.has_method("set_direction"):
-			bullet.set_direction(direction)
-			print("✅ set_direction() вызван")
-		else:
-			print("❌ У пули нет метода set_direction()")
-			print("Тип: ", bullet.get_class())
-			print("Скрипт: ", bullet.get_script())
-
-		if direction.x < 0:
-			sprite.flip_h = true
-		else:
-			sprite.flip_h = false
-	else:
+	if not (player_in_range and player != null and bullet_scene):
 		print("❌ Условие для стрельбы не выполнено")
+		return
+
+	# Вектор от врага к игроку
+	var to_player = player.global_position - global_position
+
+	if to_player.length() == 0:
+		print("❌ Игрок в той же точке — пропускаем")
+		return
+
+	# Нормализованное направление
+	var direction = to_player.normalized()
+	print("➡️ Направление: ", direction)
+
+	# Поворачиваем спрайт (если нужно): флипаем только по X
+	if direction.x > 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+
+	# Смещение точки выстрела (в направлении стрельбы)
+	var shoot_offset = 60
+	shoot_point.position = direction * shoot_offset
+
+	# Создаём пулю
+	var bullet = bullet_scene.instance()
+	if bullet == null:
+		print("❌ Пуля не создалась! Проверь Bullet.tscn")
+		return
+
+	add_child(bullet)
+	bullet.global_position = shoot_point.global_position
+	print("✅ Пуля создана")
+	print("🎯 Позиция пули: ", bullet.global_position)
+
+	# Передаём направление и владельца
+	if bullet.has_method("set_direction"):
+		bullet.set_direction(direction, self)
+		print("✅ set_direction() вызван")
+	else:
+		print("❌ У пули нет метода set_direction()")
+		print("Тип: ", bullet.get_class())
+		print("Скрипт: ", bullet.get_script())
