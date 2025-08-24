@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://arts/earth.png" type="Texture" id=1]
 [ext_resource path="res://arts/water.png" type="Texture" id=2]
@@ -29,9 +29,18 @@
 [ext_resource path="res://pixil-frame-2.png" type="Texture" id=27]
 [ext_resource path="res://pixil-frame-5.png" type="Texture" id=28]
 [ext_resource path="res://pixil-frame-6.png" type="Texture" id=29]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=30]
 [ext_resource path="res://pixil-frame-8.png" type="Texture" id=31]
 [ext_resource path="res://pixil-frame-4.png" type="Texture" id=32]
 [ext_resource path="res://pixil-frame-3.png" type="Texture" id=33]
+[ext_resource path="res://pixil-frame-0 (7).png" type="Texture" id=34]
+[ext_resource path="res://Enemy.gd" type="Script" id=36]
+
+[sub_resource type="CapsuleShape2D" id=22]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 269.757
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -234,6 +243,33 @@ extents = Vector2( 31.25, 31 )
 
 [node name="Main" type="Node"]
 
+[node name="Enemy" type="KinematicBody2D" parent="."]
+position = Vector2( 2162, 1165 )
+script = ExtResource( 36 )
+bullet_scene = ExtResource( 30 )
+
+[node name="Sprite" type="Sprite" parent="Enemy"]
+z_index = 1
+z_as_relative = false
+texture = ExtResource( 34 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource( 22 )
+
+[node name="DetectionArea" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/DetectionArea"]
+shape = SubResource( 21 )
+
+[node name="ShootTimer" type="Timer" parent="Enemy"]
+wait_time = 1.5
+autostart = true
+
+[node name="ShootPoint" type="RayCast2D" parent="Enemy"]
+position = Vector2( -64, -5 )
+enabled = true
+cast_to = Vector2( -205, -5 )
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 4.0
 margin_top = 6.0
@@ -338,12 +374,14 @@ stream = ExtResource( 20 )
 autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2695, 683 )
 shape = SubResource( 13 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2( -142, 645 )
 shape = SubResource( 13 )
 
