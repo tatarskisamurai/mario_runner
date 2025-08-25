@@ -27,6 +27,7 @@ window/size/height=450
 
 "пик"=false
 "пиксели"=false
+input=false
 
 [gui]
 

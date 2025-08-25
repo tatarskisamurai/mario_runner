@@ -63,7 +63,7 @@ func _on_shoot_timer_timeout():
 		return
 
 	# Нормализованное направление
-	var direction = to_player.normalized()
+	var direction = (player.global_position - shoot_point.global_position).normalized()
 	print("➡️ Направление: ", direction)
 
 	# Поворачиваем спрайт (если нужно): флипаем только по X
@@ -95,3 +95,7 @@ func _on_shoot_timer_timeout():
 		print("❌ У пули нет метода set_direction()")
 		print("Тип: ", bullet.get_class())
 		print("Скрипт: ", bullet.get_script())
+	if player_in_range and bullet_scene:
+		add_child(bullet)
+		bullet.global_position = shoot_point.global_position
+		bullet.set_direction(direction, self)  # Я — владелец	

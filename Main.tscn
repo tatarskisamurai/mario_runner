@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://arts/earth.png" type="Texture" id=1]
 [ext_resource path="res://arts/water.png" type="Texture" id=2]
@@ -37,6 +37,9 @@
 [ext_resource path="res://453f6037fa30790.mp3" type="AudioStream" id=35]
 [ext_resource path="res://Enemy.gd" type="Script" id=36]
 [ext_resource path="res://5bb2e54c7441431.mp3" type="AudioStream" id=37]
+[ext_resource path="res://pixil-frame-0 (10).png" type="Texture" id=38]
+[ext_resource path="res://pixil-frame-0 (9).png" type="Texture" id=39]
+[ext_resource path="res://Shotgun.gd" type="Script" id=40]
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 41, 55 )
@@ -340,11 +343,28 @@ frames = SubResource( 9 )
 playing = true
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 307, 1084 )
+position = Vector2( 428, 1084 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Shotgun" type="Node2D" parent="Player"]
+position = Vector2( 1, 47 )
+script = ExtResource( 40 )
+__meta__ = {
+"_edit_group_": true
+}
+bullet_scene = ExtResource( 30 )
+
+[node name="Sprite" type="Sprite" parent="Player/Shotgun"]
+position = Vector2( -1, 8 )
+z_index = 2
+texture = ExtResource( 39 )
+
+[node name="Position2D" type="Position2D" parent="Player/Shotgun"]
+position = Vector2( -7, 7 )
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 43.5 )
@@ -388,26 +408,53 @@ stream = ExtResource( 20 )
 autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2695, 683 )
 shape = SubResource( 13 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
 position = Vector2( -142, 645 )
 shape = SubResource( 13 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer"]
+visible = false
 margin_left = 242.0
 margin_top = 2041.0
 margin_right = 917.0
 margin_bottom = 2437.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Crosshair" type="Node2D" parent="CanvasLayer/UI"]
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Crosshair"]
+z_index = 2
+texture = ExtResource( 38 )
+
+[node name="Inventory" type="HBoxContainer" parent="CanvasLayer/UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Slot1" type="Button" parent="CanvasLayer/UI/Inventory"]
+margin_right = 12.0
+margin_bottom = 40.0
+
+[node name="Slot2" type="Button" parent="CanvasLayer/UI/Inventory"]
+margin_left = 16.0
+margin_right = 28.0
+margin_bottom = 40.0
+
+[node name="Slot3" type="Button" parent="CanvasLayer/UI/Inventory"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
 anchor_right = 0.275
 margin_left = -210.0
 margin_top = -2017.0
@@ -446,10 +493,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[connection signal="collected" from="Coin2" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
+[connection signal="collected" from="Coin2" to="CanvasLayer/UI/Label" method="_on_Coin_collected"]
 [connection signal="body_entered" from="Coin2/CoinArea" to="Coin2" method="_on_CoinArea_body_entered"]
-[connection signal="collected" from="Coin3" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
+[connection signal="collected" from="Coin3" to="CanvasLayer/UI/Label" method="_on_Coin_collected"]
 [connection signal="body_entered" from="Coin3/CoinArea" to="Coin3" method="_on_CoinArea_body_entered"]
-[connection signal="collected" from="Coin" to="CanvasLayer/Control/Label" method="_on_Coin_collected"]
+[connection signal="collected" from="Coin" to="CanvasLayer/UI/Label" method="_on_Coin_collected"]
 [connection signal="body_entered" from="Coin/CoinArea" to="Coin" method="_on_CoinArea_body_entered"]
 [connection signal="startuem" from="Player" to="Player/Camera2D" method="_on_Player_startuem"]
